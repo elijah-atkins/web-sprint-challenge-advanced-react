@@ -15,10 +15,6 @@ export const useForm = (initialState, key, submitLogic) => {
     });
   };
 
-  // const handleEmailChanges = e => {
-  //   setEmail(e.target.value);
-  // };
-
   const clearForm = () => {
     setValues(initialState);
     setShowSuccessMessage(false);
