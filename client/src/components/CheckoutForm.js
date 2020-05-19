@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { useForm } from '../hooks/useForm'
+import { useForm } from "../hooks/useForm";
 
 const initialValue = {
-  
   firstName: "",
   lastName: "",
   address: "",
@@ -16,11 +15,13 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  const [values, handleChanges, clearForm, handleSubmit, showSuccessMessage] = useForm(
-    initialValue,
-    "checkout-form",
-  );
-
+  const [
+    values,
+    handleChanges,
+    clearForm,
+    handleSubmit,
+    showSuccessMessage,
+  ] = useForm(initialValue, "checkout-form");
 
   return (
     <>
@@ -47,7 +48,7 @@ const CheckoutForm = (props) => {
         <label>
           Address:
           <input
-          data-testid="address"
+            data-testid="address"
             name="address"
             value={values.address}
             onChange={handleChanges}
@@ -55,15 +56,30 @@ const CheckoutForm = (props) => {
         </label>
         <label>
           City:
-          <input data-testid="city" name="city" value={values.city} onChange={handleChanges} />
+          <input
+            data-testid="city"
+            name="city"
+            value={values.city}
+            onChange={handleChanges}
+          />
         </label>
         <label>
           State:
-          <input data-testid="state" name="state" value={values.state} onChange={handleChanges} />
+          <input
+            data-testid="state"
+            name="state"
+            value={values.state}
+            onChange={handleChanges}
+          />
         </label>
         <label>
           Zip:
-          <input data-testid="zip" name="zip" value={values.zip} onChange={handleChanges} />
+          <input
+            data-testid="zip"
+            name="zip"
+            value={values.zip}
+            onChange={handleChanges}
+          />
         </label>
         <button data-testid="checkout">Checkout</button>
       </form>

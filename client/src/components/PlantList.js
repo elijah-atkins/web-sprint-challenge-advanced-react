@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+import Search, { searchArr } from "./Search";
 
 export default class PlantList extends React.Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -8,8 +8,6 @@ export default class PlantList extends React.Component {
     super(props);
     this.state = {
       plants: [],
-      searchTerm: "",
-      searchResults: [],
     };
   }
 
@@ -19,35 +17,19 @@ export default class PlantList extends React.Component {
     axios
       .get("http://localhost:3333/plants")
       .then((res) => {
-    // - set the returned plants array to this.state.plants
+        // - set the returned plants array to this.state.plants
         this.setState({ plants: res.data.plantsData });
       })
       .catch((error) => alert(`Error: ${error}`));
-    }
-    // newResults = this.state.plants.filter(plant => {
-    //   return plant.toLowerCase().includes(this.state.searchTerm.toLowerCase());
-    // });
-
-
+  }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
-      //added form for search
-      <div className="plant-table">
-        <form>
-          <label htmlFor="name">Search:</label>
-          <input
-            id="name"
-            type="text"
-            name="textfield"
-            placeholder="Search"
-            value={this.searchTerm}
-            onChange={this.handleChange}
-          />
-        </form>
+      <div>
+        <Search plants={this.state.plants} />
         <main className="plant-list">
-          {this.state?.plants?.map((plant) => (
+          {this.state.plants.map((plant) => (
             <div className="plant-card" key={plant.id}>
               <img className="plant-image" src={plant.img} alt={plant.name} />
               <div className="plant-details">
