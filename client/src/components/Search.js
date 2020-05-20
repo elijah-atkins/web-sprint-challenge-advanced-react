@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "../hooks/useForm";
 
 const Search = ({ plants }) => {
+
   const [seachResults, setSearchResults] = useState([]);
   const initialValue = {
     search: "",
@@ -10,9 +11,7 @@ const Search = ({ plants }) => {
   const [
     values,
     handleChanges,
-    clearForm,
     handleSubmit,
-    showSuccessMessage,
   ] = useForm(initialValue, "searches");
 
   useEffect(() => {
@@ -23,7 +22,8 @@ const Search = ({ plants }) => {
     });
 
     setSearchResults(newResults);
-    console.log(seachResults);
+
+
   }, [values.search, plants]);
 
   return (

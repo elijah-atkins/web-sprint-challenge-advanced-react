@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import Search, { searchArr } from "./Search";
+import Search from "./Search";
+import { useSearch } from '../hooks/useSearch'
 
 export default class PlantList extends React.Component {
   // add state with a property called "plants" - initialize as an empty array
@@ -21,13 +22,15 @@ export default class PlantList extends React.Component {
         this.setState({ plants: res.data.plantsData });
       })
       .catch((error) => alert(`Error: ${error}`));
+
+
   }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
     return (
       <div>
-        <Search plants={this.state.plants} />
+        <Search plants={this.state.plants}/>
         <main className="plant-list">
           {this.state.plants.map((plant) => (
             <div className="plant-card" key={plant.id}>
